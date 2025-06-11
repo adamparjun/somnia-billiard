@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Offline Billiard Game</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="menu">
+    <button onclick="connectWallet()">Connect Wallet</button>
+    <p id="wallet-address">Not connected</p>
+    <button onclick="startGame()">Play (0.001 STT)</button>
+    <p id="status"></p>
+  </div>
+  <canvas id="gameCanvas" width="800" height="400"></canvas>
+  <script src="main.js"></script>
+  <script src="wallet.js"></script>
+</body>
+</html>
