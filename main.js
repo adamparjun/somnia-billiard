@@ -16,3 +16,32 @@ function startGame() {
   gameStarted = true;
   initGame();
 }
+let socket = io("http://localhost:3000");
+let isMyTurn = false;
+let roomId = null;
+
+function connectMultiplayer() {
+  socket.emit("join");
+}
+
+socket.on("roomJoined", (room) => {
+  roomId = room;
+  document.getElementById("status").innerText = "Waiting for opponent...";
+});
+
+socket.on("startGame", (players) => {
+  isMyTurn = (players[0] === socket.id);
+  document.getElementById("status").innerText = isMyTurn ? "Your turn!" : "Opponent's turn";
+  initGame();
+});
+
+socket.on("opponentShot", (data) => {
+  applyOpponentShot(data);
+  isMyTurn = true;
+  document.getElementById("status").innerText = "Your turn!";
+});
+
+socket.on("gameOver", (winnerId) => {
+  const result = (winnerId === socket.id) ? "You Win!" : "You Lose!";
+  document.getElementById("status").innerText = result;
+});
