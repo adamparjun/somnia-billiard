@@ -1,3 +1,6 @@
+const socket = io("http://localhost:3000"); // Ganti dengan domain jika hosting
+let roomId = null;
+let isMyTurn = false;
 let gameStarted = false;
 
 function startGame() {
