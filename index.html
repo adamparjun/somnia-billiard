@@ -1,35 +1,62 @@
+<!DOCTYPE html>
+<html>
 <head>
   <title>Offline Billiard Game</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Tambahkan library Web3Modal dan ethers -->
+  <!-- Library -->
   <script src="https://cdn.jsdelivr.net/npm/web3modal@2.4.2/dist/web3modal.umd.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/ethers@6.8.1/dist/ethers.umd.min.js"></script>
 
-  <!-- Tambahkan style untuk Web3Modal (opsional) -->
+  <!-- Style Langsung -->
   <style>
-  body {
-    font-family: sans-serif;
-    background: white;
-    color: black;
-  }
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f4f4f4;
+      font-family: sans-serif;
+      text-align: center;
+    }
 
-  #menu {
-    margin-bottom: 20px;
-  }
+    #menu {
+      padding: 20px;
+    }
 
-  button {
-    padding: 10px 20px;
-    margin: 5px;
-    background: #00aaff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      background-color: #00aaff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
 
-  #wallet-address, #status {
-    margin-top: 10px;
-  }
+    canvas {
+      border: 2px solid #333;
+      background: #0e7e12; /* Warna meja billiard */
+      display: block;
+      margin: 0 auto;
+    }
+
+    #wallet-address, #status {
+      margin-top: 10px;
+    }
   </style>
 </head>
+
+<body>
+  <div id="menu">
+    <button onclick="connectWallet()">Connect Wallet</button>
+    <p id="wallet-address">Not connected</p>
+    <button onclick="startGame()">Play (0.001 STT)</button>
+    <p id="status"></p>
+  </div>
+
+  <canvas id="gameCanvas" width="800" height="400"></canvas>
+
+  <script src="main.js"></script>
+  <script src="wallet.js"></script>
+</body>
+</html>
